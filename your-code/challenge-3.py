@@ -12,19 +12,20 @@ The following function shows one way to solve the problem but the code is not id
 Refactor the code based on what you have learned about code simplicity and efficiency.
 """
 
-def my_function(X):
-    solutions = []
-    for x in range(5, X):
-        for y in range(4, X):
-            for z in range(3, X):
-                if (x*x==y*y+z*z):
-                    solutions.append([x, y, z])
-    m = 0
+
+# I decided to build a function. The first thing I did was to construct a List comprehension out of the multiple For loops. I then gave the variables more meaningful names and finally simplified the return of the function.
+
+
+
+def my_function(number):
+    solutions = [[x,y,z] for x in range(5,number) for y in range(4,number) for z in range(3,number) if (x*x==y*y+z*z)]
+    longest_side = 0
+    
     for solution in solutions:
-        if m < max(solution):
-            m = max(solution)
-    return m
+        longest_side = max(solution)
+    
+    return longest_side
 
-X = input("What is the maximal length of the triangle side? Enter a number: ")
+number = input("What is the maximal length of the triangle side? Enter a number: ")
 
-print("The longest side possible is " + str(my_function(int(X))))
+print("The longest side possible is " + str(my_function(int(number))))
